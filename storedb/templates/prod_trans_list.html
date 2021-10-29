@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+    <h1 style="font-size:25px">Previous Transactions:</h1><br>
+<table>
+       <tr>
+           <td>Date</td>
+           <td>Product Name</td>
+           <td>Product Quantity</td>
+           <td>Name</td>
+           <td>Number</td>
+       </tr>
+{% for t in prod_trans_list %}
+        <tr>
+            <td>{{t.date}}</td>
+            <td>{{t.prod_name}}</td>
+            <td>{{t.prod_quant}}</td>
+            <td>{{t.name}}</td>
+            <td><a href="{{t.name}}/{{t.number}}">{{t.number}}</a></td>
+        </tr>
+
+{% endfor %}
+</table><br><br>
+<form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Done</button>
+    </form>
+<br><br>
+
+
+{% endblock content %}

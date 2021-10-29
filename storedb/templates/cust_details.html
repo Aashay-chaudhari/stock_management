@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+   <h1 style="font-size:25px">Customer name:  {{cust_name}}</h1><br>
+<table>
+        <tr>
+            <td>Product Name</td>
+            <td>Invoice Number</td>
+            <td>Bill</td>
+        </tr>
+
+        {% for inv in inv_list %}
+
+
+        <tr>
+            <td>{{inv.prod_name}}</td>
+            <td><a href="invoice/{{inv.inv_no}}">{{inv.inv_no}}</a>
+            </td>
+            <td>{{inv.total}}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table><br><br>
+
+    <form action="customer_list" method="post">
+        {% csrf_token %}
+        <button type="submit">Back to Customer List</button>
+
+
+    </form><br><br>
+</center>
+{% endblock content %}

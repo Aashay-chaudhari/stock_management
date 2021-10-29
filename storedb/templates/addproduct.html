@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+table{
+width: 90%;
+}
+input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+
+</style>
+<center>
+    {{message}}
+<h1 style="font-size:25px">Enter Product details: </h1><br>
+
+    <table>
+       <tr>
+           <td>Product Name</td>
+           <td>Product Code</td>
+<!--           <td>Product Size</td>-->
+<!--           <td>Product Unit</td>-->
+           <td>Opening Quantity</td>
+           <td>Price</td>
+           <td>Reorder Level</td>
+       </tr>
+<form action="insertprod" method="post">
+        <tr>
+            <td><input type="text" name="prod_name" placeholder="Enter Product Name" required autofocus style="width:90%"></a></td>
+            <td><input type="text" name="code" placeholder="Enter Product Code" required style="width:90%"></td>
+<!--            <td><input type="text" name="size" placeholder="Enter Product Size" required style="width:90%"></td>-->
+<!--            <td><input type="text" name="unit" placeholder="Enter Product Unit" required style="width:90%"></a></td>-->
+            <td><input type="text" name="stock" placeholder="Enter Opening Quantity" required style="width:90%"></a></td>
+            <td><input type="text" name="price" placeholder="Enter Price" required style="width:90%"></a></td>
+            <td><input type="text" name="reorder" placeholder="Reorder Level" required style="width:90%"></a></td>
+        </tr>
+
+
+</table>
+<br><br>
+
+        {% csrf_token %}
+        <button type="submit">Save</button>
+    </form>
+    <br><br>
+       <form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Cancel</button>
+    </form><br>
+</center>
+{% endblock content %}

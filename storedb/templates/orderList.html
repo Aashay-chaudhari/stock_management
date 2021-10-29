@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+    <h1 style="font-size:27px">Order Lists:</h1><br>
+<table>
+            <tr>
+                <td>Order Date</td>
+                <td>Order Number</td>
+                <td>Supplier Name</td>
+            </tr>
+            {% for i in order %}
+
+            <tr>
+                <td>{{i.0}}</td>
+                <td><a href="order/{{i.1}}">{{i.1}}</a></td>
+<!--                <form action="./supp">-->
+<!--                    <input type="text" hidden name="abc" value="{{i.inv_no}}">-->
+<!--                    <td><button type="submit">{{i.inv_no}}</button></td>-->
+<!--                </form>-->
+                <td>{{i.2}}</td>
+            </tr>
+
+           {% endfor %}
+
+        </table><br><br>
+    <form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Home</button>
+    </form><br><br>
+</center>
+{% endblock content %}

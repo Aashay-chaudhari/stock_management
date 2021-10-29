@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management</title>
+</head>
+<style>
+    html{
+    background: #D3D3D3	;
+    font-family: Verdana, sans-serif;
+    }
+    body{
+    color: black;
+    background: #ededed;
+    border-radius: 30px;
+    }
+
+    table, th, td {
+      table-layout: fixed;
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+    button {
+      background-color:black;
+      border: medium;
+      border-color: black;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 16px;
+
+    }
+    button:hover{
+      background-color: grey;
+
+}
+.hh{
+background:#D3D3D3;
+height: 75px;
+}
+ .logo{
+    float:left;
+    padding-left:35%;
+    }
+    .store{
+    float:left;
+    }
+    .heading{
+    height:75px;
+    }
+    .tab24{
+    padding-left:50px;
+    }
+</style><div class="hh">
+<div class="heading">
+    <center>
+    <div class="logo">
+            {% load static %}
+        <img src="./static/img/krushiark.jpg" alt="My image" width="60" height="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    <div class="store">
+        <center><h1 style="font-size: 25">Store Management System</h1></center>
+    </div>
+        </center>
+</div>
+</div>
+  <form action="addcust" method="post">
+        {% csrf_token %}
+
+    <style>
+    .details{
+    padding-left: 300px;
+    }
+    input{
+        padding-top: 1%;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-bottom: 1%;
+
+        border-radius: 5px;
+
+        }
+        .details > input{
+        font-size: 20px;
+
+        border-radius: 5px;
+        }
+        .address > input{
+        font-size: 20px;
+        border-radius: 5px;
+        }
+        .tab{
+        padding-left: 295px;
+        }
+    </style>
+    <body>
+    <center><h1 style="font-size:25px">Add Customer  </h1><br></center>
+    <div class="details">
+
+    <label style="font-size:25px;">Enter Customer Name: <input type="text" name="name" placeholder="Enter Customer Name" autofocus required></label><br><br>
+       <label style="font-size:25px;">Enter Phone number:&nbsp;&nbsp;
+        <input type="number" name="phone1" placeholder="Enter Phone number"></label><br><br>
+     <span class="tab"><label><input type="number" name="phone2" placeholder="Enter Alternate Number"tabindex="-1"></label>
+</div><br>
+<style>
+    .address{
+    padding-left: 300px;
+    }
+
+</style>
+    <div class="address">
+        <label style="font-size:25px">Address: <br></span><textarea name="address" rows="6" cols="50" style="font-size:25px;" placeholder="..."></textarea></label><br>
+         <label style="font-size:25px">Remarks: <br></span><textarea name="remark" rows="6" cols="50" style="font-size:25px;" placeholder="..."></textarea></label>
+    </div><br>
+    <label>
+         <center> <button type="submit">Add</button>
+    </form>
+    <br><br>
+    <form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Cancel</button>
+    </form></label>
+</center>
+
+</body>
+</html>

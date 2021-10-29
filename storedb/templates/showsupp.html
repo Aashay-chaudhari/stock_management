@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center><h1 style="font-size: 25px">Suppliers</center>
+<center><br><br>
+    {{ text }}<br><br>
+<table>
+        <tr>
+            <td></td>
+            <td>Supplier name</td>
+            <td></td>
+        </tr>
+
+        {% for supp in supp_list %}
+
+
+        <tr>
+            <td><form action="edit_supplier/{{supp.id}}" method="post">
+                {% csrf_token %}<button>Edit Button</button></form></td>
+            <td>  <a href="supplier/{{supp.supp_name}}">{{supp.supp_name}}</a></td>
+            <td><form action="deletesupp/{{supp.supp_name}}" method="post">
+                {% csrf_token %}<button>Delete Supplier</button></td>
+        </form>
+        </tr>
+
+        {% endfor %}
+
+    </table><br><br>
+<form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Done</button>
+    </form><br></center><br><br>
+{% endblock content %}

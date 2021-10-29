@@ -1,0 +1,4 @@
+cd C:\Users\Aashay\PycharmProjects\stock-management-software
+
+
+C:\Users\Aashay\PycharmProjects\stock-management-software\Python\python C:\Users\Aashay\PycharmProjects\stock-management-software\manage.py

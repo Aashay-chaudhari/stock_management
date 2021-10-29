@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management</title>
+
+</head>
+<style>
+    html{
+    background: #D3D3D3	;
+    font-family: Verdana, sans-serif;
+    }
+    .hood{
+    color: black;
+    background: #ededed;
+    border-radius: 30px;
+    }
+
+    table, th, td {
+      table-layout: fixed;
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+    button {
+      background-color:black;
+      border: medium;
+      border-color: black;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 16px;
+
+    }
+    button:hover{
+      background-color: grey;
+
+}
+    .logo{
+    float:left;
+    padding-left:35%;
+    }
+    .store{
+    float:left;
+    padding-top:-10px;
+    }
+    .heading{
+    height:75px;
+    padding-top:20px;
+    }
+    .tab24{
+    padding-left:50px;
+    }
+</style>
+<div class="heading">
+    <center>
+    <div class="logo">
+            {% load static %}
+        <img src="./static/img/krushiark.jpg" alt="My image" width="60" height="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    <div class="store">
+    <center><h1 style="font-size: 25px">Store Management System</center>
+    </div>
+        </center>
+</div>
+<div class="hood"><br><b>
+     {% block content %}
+
+     {% endblock content %}</b>
+
+</div>
+<body>
+
+</body>
+</html>

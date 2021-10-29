@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+    <h1>Previous Transactions:</h1><br>
+<table>
+       <tr>
+           <td>Date</td>
+           <td>Name</td>
+           <td>Number</td>
+       </tr>
+{% for t in trans_list %}
+        <tr>
+            <td>{{t.0}}</td>
+            <td><a href="{{t.name}}/{{t.number}}">{{t.1}}</a></td>
+            <td>{{t.2}}</td>
+        </tr>
+
+{% endfor %}
+</table><br><br>
+<form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Done</button>
+    </form>
+<br><br>
+
+
+{% endblock content %}

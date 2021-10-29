@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+table{
+width: 90%;
+}
+    input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+::placeholder {
+  color: black;
+  font-size: 18px;
+}
+</style>
+<center>
+    {{message}}
+<h1>Update Product details: </h1>
+    <br>
+
+    <table>
+       <tr>
+           <td>Product Name</td>
+           <td>Product Code</td>
+<!--           <td>Product Size</td>-->
+<!--           <td>Product Unit</td>-->
+           <td>Opening Quantity</td>
+           <td>Price</td>
+           <td>Reorder Level</td>
+       </tr>
+<form action="updateprod" method="post">
+        <tr><b>
+            <input type="text" hidden value="{{id}}" name="id">
+            <td><input type="text" name="prod_name" placeholder="{{name}}" value="{{name}}" required autofocus style="width:90%"></a></td>
+            <td><input type="text" name="code" placeholder="{{code}}" value="{{code}}" required style="width:90%"></td>
+<!--            <td><input type="text" name="size" placeholder="{{size}}" value="{{size}}" required style="width:90%"></td>-->
+<!--            <td><input type="text" name="unit" placeholder="{{unit}}" value="{{unit}}" style="width:90%"></td>-->
+            <td><input type="text" name="stock" placeholder="{{stock}}" value="{{stock}}" required style="width:90%"></a></td>
+            <td><input type="text" name="price" placeholder="{{price}}" value="{{price}}" required style="width:90%"></a></td>
+            <td><input type="text" name="reorder" placeholder="{{reorder}}" value="{{reorder}}" required style="width:90%"></a></td></b>
+        </tr>
+
+
+</table>
+<br><br>
+
+        {% csrf_token %}
+        <button type="submit">Save</button>
+    </form>
+    <br><br>
+       <form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Cancel</button>
+    </form><br>
+</center>
+{% endblock content %}

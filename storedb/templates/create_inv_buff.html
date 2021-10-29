@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+  padding: 10px;
+}
+input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+.cname > input{
+font-size: 20px;
+padding:50px;
+border-radius: 5px;
+}
+.date > input{
+font-size: 20px;
+padding:25px;
+border-radius: 5px;
+}
+
+.cname{
+width: 30%;
+float: left;
+height:200px;
+padding-left: 240px;
+padding-top: 50px;
+<!--background: yellow;-->
+}
+.date{
+width: 30%;
+float:right;
+padding-top: 50px;
+
+<!--background: cyan;-->
+}
+.content{
+padding-top: 150px;
+
+}
+select{
+padding-right: 40px;
+padding-left: 40px;
+padding-top: 15px;
+padding-bottom: 15px;
+border-radius: 5px;
+}
+</style>
+<div class="cname">
+<form action="./inv_addmore" method="post">
+     {% csrf_token %}
+
+    <label style="font-size:25px">Name : {{cust_name}}</label>
+</div>
+<div class="date">
+        <label style="font-size:25px">Date : {{date}}</label><br><br>
+        <label style="font-size:25px">Invoice number: {{inv}}</label>
+
+</div>
+<center>
+
+
+<div class="content">
+
+    <table>
+        <tr>
+            <td>Product name</td>
+<!--            <td>Product Size</td>-->
+<!--            <td>Product Unit</td>-->
+            <td>Product Quantity</td>
+            <td>Product Rate</td>
+            <td>Total</td>
+        </tr>
+        {% for c in inv_buff_list %}
+        <tr>
+            <td>{{c.prod_name}}</td>
+<!--            <td>{{c.prod_size}}</td>-->
+<!--            <td>{{c.prod_unit}}</td>-->
+            <td>{{c.prod_quant}}</td>
+            <td>{{c.prod_rate}}</td>
+            <td>{{c.total}}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td>
+                 <select name="prod_name" id="prod_name" placeholder="Enter Product name" autofocus style="padding:8px; width:90%">
+                {% for product in prod_list %}
+                <option value="{{product.prod_name}}">{{product.prod_name}}</option>
+                {% endfor %}
+                  </select>
+            </td>
+<!--            <td>-->
+<!--                <select name="size" id="size" style="width:90%">-->
+<!--                {% for prod in prod_size_list %}-->
+<!--                <option value="{{prod.prod_size}}">{{prod.prod_size}}</option>-->
+<!--                {% endfor %}-->
+<!--                </select>-->
+<!--            </td>-->
+<!--&lt;!&ndash;            <td><input type="text" name="size" placeholder="Enter Size"></td>&ndash;&gt;-->
+<!--            <td>-->
+<!--                <select name="unit" id="unit" style="width:90%">-->
+<!--                {% for prod in prod_unit_list %}-->
+<!--                <option value="{{prod.prod_unit}}">{{prod.prod_unit}}</option>-->
+<!--                {% endfor %}-->
+<!--                </select>-->
+<!--            </td>-->
+<!--            <td><input type="text" name="unit" placeholder="(Ltr/Kg/Grams)"></td>-->
+            <td><input type="text" name="quant" placeholder="Enter Quantity" required style="width:90%"></td>
+            <td><input type="text" name="rate" placeholder="Enter Price" required style="width:90%"></td>
+            <td><input type="text" name="total" placeholder="Generated Automatically" required disabled style="width:90%"></td>
+        </tr>
+
+
+
+    </table><br><br><br>
+ <button type="submit" name="action" value="addmore">Add More</button>
+     <span style="padding-left:30px">
+<button type="submit" name="action" value="done">Done</button>
+</form><br><br><br></center>
+    <style>
+
+        .table4{
+        width:55%;
+        }
+        .table4 td{
+        width:30%;
+        }
+        .table5{
+        padding-left:69%;
+        }
+    </style>
+    <form action="insertInv" method="post">
+        {% csrf_token %}
+<div class="table5">
+    <table class="table4">
+        <tr>
+            <td>Add discount</td>
+            <td><input type="text" name="disc" placeholder="Enter Discount" style="width:90%" required ></td>
+        </tr>
+        <tr>
+            <td>Taxes</td>
+            <td><input type="text" name="tax" placeholder="Enter Tax" style="width:90%" required ></td>
+        </tr>
+        <tr>
+            <td>Delivery Charge</td>
+            <td><input type="text" name="delivery" placeholder="Enter Delivery Charge" style="width:90%" required ></td>
+        </tr>
+
+
+    </table><br></div>
+<center>
+
+        <button type="submit">Save</button>
+    </form><br><br>
+
+ <form action="cancel" method="post">
+        {% csrf_token %}
+        <button type="submit">Cancel</button>
+    </form><br><br>
+</div>
+</center>
+
+{% endblock content %}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management</title>
+</head>
+<style>
+    html{
+    background: #D3D3D3	;
+    font-family: Verdana, sans-serif;
+<!--    font-size:10px;-->
+    }
+    .hood{
+    color: black;
+    background: #ededed;
+    border-radius: 50px;
+    }
+  button {
+      width: 8%;
+      background-color:black;
+      border: medium;
+      border-color: black;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 16px;
+
+    }
+    button:hover{
+      background-color: grey;
+
+}
+ .logo{
+    float:left;
+    padding-left:35%;
+    }
+    .store{
+    float:left;
+    }
+    .heading{
+    height:75px;
+    padding-top:20px;
+    }
+    .tab24{
+    padding-left:50px;
+    }
+</style>
+<div class="heading">
+    <center>
+
+    <div class="logo">
+            {% load static %}
+        <img src="./static/img/krushiark.jpg" alt="My image" width="60" height="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    <div class="store">
+    <center><h1 style="font-size: 25px;">Store Management System</center>
+    </div>
+        </center>
+</div>
+<div class="hood"><br><b>
+<style>
+    button{
+     width: 120%;
+     }
+    .check >table{
+    table-layout: fixed;
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+    .check > th{
+    border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+
+</style>
+<center>
+    <h1 style="font-size:25px">Products Page </h1><br>
+</center>
+<style>
+<!--    .table1 td{-->
+<!--      table-layout: fixed;-->
+<!--      border: 1px solid black;-->
+<!--      border-collapse: collapse;-->
+<!--      width: 70%;-->
+<!--      text-align: center;-->
+<!--      padding: 10px;-->
+<!--       }-->
+.table1 {
+    width:70%;
+    table-layout: fixed
+    border:1px solid black;
+    border-collapse:collapse;
+    text-align: center;
+    padding: 10px;}
+.table1 th {
+    padding: 10px;
+    vertical-align:middle;
+    text-align:center;
+    border:1px solid black; }
+    .table1 td {
+    padding: 10px;
+    vertical-align:middle;
+    text-align:center;
+    border:1px solid black; }
+
+    .optionsdiv{
+    width: 15%;
+    height: 400px;
+    float:left;
+    background: #ededed;
+    font-size:20px;
+    }
+    .optionsdiv > a{
+    color: black;
+    }
+    .optionsdiv > a:hover{
+    color: blue;
+    }
+
+    a:hover{
+    color: blue;
+    }
+</style><center>
+    <div class="optionsdiv"><br><br><br><br><br><a href="show_prod">Products</a><br><br>
+    <a href="show_supp">Suppliers</a><br><br>
+    <a href="show_cust">Customers</a></div></center><br><br>
+    <div class="table1div">
+<table class="table1">
+       <tr>
+           <td>Product Name</td>
+<!--           <td>Product Size</td>-->
+           <td>Product Stock</td>
+           <td>Price</td>
+           <td>Reorder Level</td>
+       </tr>
+{% for product in prod_list %}
+        <tr>
+            <td><a href="product/{{product.prod_name}}">{{product.prod_name}}</a></td>
+<!--            <td>{{product.prod_size}}&nbsp;&nbsp;&nbsp;{{product.prod_unit}}</td>-->
+            <td>{{product.prod_stock}}</td>
+            <td>{{product.prod_price}}</td>
+            <td>{{product.prod_reorder_level}}</td>
+        </tr>
+
+{% endfor %}
+
+</table>
+    </center>
+</div>
+    <style>
+        .inv{
+        height:200px;
+        width:45%;
+        float:left;
+        padding-left:250px;
+        }
+        .order{
+        height:200px;
+        width:38%;
+        float:right;
+        }
+
+
+    </style>
+
+
+<br><br>
+
+<style>
+.table2 {
+padding-left: 5%;
+border-spacing: 15px;
+}
+.table2 td{
+
+width:200px;
+padding-left:30px;
+padding-right:30px;
+}
+</style>
+<br>
+<table class="table2">
+    <tr>
+        <td><form action="addproduct" method="post">
+            {% csrf_token %}<button type="submit">Add Product</button></form></td>
+        <td><form action="./create_invoice">
+        <button type="submit">Sale</button>
+    <!--    sales is invoice-->
+        </form></td>
+        <td><form action="./create_order">
+      <button type="submit">Purchase</button>
+        <!--    Purchase is orders-->
+        </form></td>
+    </tr>
+    <tr>
+        <td><br><form action="./add_customer">
+    <button type="submit">Add Customer</button>
+</form></td>
+        <td><br><form action="./inv_list">
+    <button type="submit">Sales List</button>
+</form></td>
+        <td><br><form action="./order_list">
+    <button type="submit">Purchase List</button>
+</form></td>
+    </tr>
+    <tr>
+        <td><br><form action="./add_supplier">
+    <button type="submit">Add Supplier</button>
+</form></td>
+<!--        <td><br><form action="./print_inv_list">-->
+        <td><br><form action="">
+    <button type="submit">Print Sale</button>
+</form></td>
+<!--        <td><br><form action="./print_order_list">-->
+        <td><br><form action="">
+    <button type="submit">Print Order</button>
+</form></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td> <form action="./show_transactions">
+      &nbsp;&nbsp;&nbsp;<button type="submit">Last 10 transactions</button>
+</form><br><br></td>
+        <td></td>
+    </tr>
+</table>
+
+
+
+

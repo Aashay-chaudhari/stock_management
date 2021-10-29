@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management</title>
+
+</head>
+<style>
+    html{
+    background: #D3D3D3	;
+    font-family: Verdana, sans-serif;
+    }
+    .hood{
+    color: black;
+    background: #ededed;
+    border-radius: 30px;
+    }
+
+    table, th, td {
+      table-layout: fixed;
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+    button {
+      background-color:black;
+      border: medium;
+      border-color: black;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 16px;
+
+    }
+    button:hover{
+      background-color: grey;
+
+}
+    .logo{
+    float:left;
+    padding-left:35%;
+    }
+    .store{
+    float:left;
+    }
+    .heading{
+    height:75px;
+    padding-top:20px;
+    }
+    .tab24{
+    padding-left:50px;
+    }
+</style>
+
+    <div class="store">
+    <center><h1 style="font-size: 25px">Store Management System</center>
+
+<div class="hood"><br><b>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+  padding: 10px;
+}
+input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+.cname > input{
+font-size: 20px;
+padding:50px;
+border-radius: 5px;
+}
+.date > input{
+font-size: 20px;
+padding:25px;
+border-radius: 5px;
+}
+
+.cname{
+width: 30%;
+float: left;
+height:200px;
+padding-left: 12%;
+padding-top: 50px;
+<!--background: yellow;-->
+}
+.date{
+width: 30%;
+float:right;
+padding-top: 50px;
+
+<!--background: cyan;-->
+}
+.content{
+padding-top: 250px;
+
+}
+select{
+padding-right: 40px;
+padding-left: 40px;
+padding-top: 15px;
+padding-bottom: 15px;
+border-radius: 5px;
+}
+</style>
+<h1 style="font-size:27px"><center>Sale Details</center>  </h1><br>
+<div class="cname">
+
+<label style="font-size:25px">Customer Name: {{inv_cust_name}}</label>
+
+</div>
+<div class="date">
+    <label style="font-size:25px">Date: {{inv_date}}</label><br><br>
+    <label style="font-size:25px">Invoice Number: {{inv_no}}</label><br><br>
+
+
+</div>
+<center>
+
+
+<div class="content">
+
+    <table>
+        <tr>
+            <td>Product name</td>
+<!--            <td>Product Size</td>-->
+<!--            <td>Product Unit</td>-->
+            <td>Product Quantity</td>
+            <td>Product Rate</td>
+            <td>Sub total</td>
+        </tr>
+        {% for i in inv %}
+        <tr>
+            <td>{{i.prod_name}}</td>
+<!--            <td>{{i.prod_size}}</td>-->
+<!--            <td>{{i.prod_unit}}</td>-->
+            <td>{{i.prod_quant}}</td>
+            <td>{{i.prod_rate}}</td>
+            <td>{{i.total}}</td>
+        </tr>
+        {% endfor %}
+
+    </table><br><br><br>
+        <style>
+
+        .table4{
+        width:55%;
+        }
+        .table4 td{
+        width:30%;
+        }
+        .table5{
+        padding-left:45%;
+        }
+    </style>
+<div class="table5">
+    <table class="table4">
+        <tr>
+            <td>Discount</td>
+            <td>{{discount}}</td>
+        </tr>
+        <tr>
+            <td>Taxes</td>
+            <td>{{tax}}</td>
+        </tr>
+        <tr>
+            <td>Delivery Charge</td>
+            <td>{{delivery}}</td>
+        </tr>
+
+
+    </table><br></div>
+
+
+    <label style="font-size:30px">Total Bill: {{ total }}</label><br><br><br><br>
+    <style>
+        .butt1{
+        float:left;
+        padding-left:30%;
+        }
+                .butt2{
+        float:left;
+        }
+                .butt3{
+        float:left;
+        }
+                .butt4{
+        float:left;
+        }
+        .tab500{
+        width:50px;
+        }
+
+    </style>
+
+    <div class="butt1">
+    <form action="./printinv/{{inv_no}}" method="post">
+    {% csrf_token %}
+    <button type="submit">Print Invoice</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </form></div>
+
+        <div class="butt2">
+    <form action="{{inv_no}}/edit_inv" method="post">
+    {% csrf_token %}
+    <button type="submit">Edit Invoice</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </form></div>
+    <div class="butt3">
+    <form action="./toinvlists" method="post">
+        {% csrf_token %}
+        <button type="submit">Go back to Invoice Lists</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </form></div>
+        <div class="butt4">
+     <form action="{{inv_no}}/deleteinv" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete Invoice</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </form></div>
+    <br><br><br>
+</div>
+</center>
+
+
+</div>
+<body>
+
+</body>
+</html>

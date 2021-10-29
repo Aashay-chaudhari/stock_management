@@ -1,0 +1,16 @@
+Dynamic Web Pages- up to 15 pages: 10000
+(includes location, conact forms, home page slider,
+admin panel, responsive design)
+
+Customizing Website according to user requirements: 3000
+(functionality to book appointments,
+add employee data, store and analyze customer data,
+integrated chat box)
+
+Social Media Integration : 1500
+
+Web Hosting : 2000
+
+SEO: 8000(Try not to include it on our side,i don't have any personal experience with seo)
+
+Tech Support: free 3 months

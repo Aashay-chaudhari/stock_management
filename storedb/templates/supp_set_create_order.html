@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+  padding: 10px;
+}
+input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+.cname > input{
+font-size: 20px;
+padding:50px;
+border-radius: 5px;
+}
+.date > input{
+font-size: 20px;
+padding:3%;
+border-radius: 5px;
+}
+
+.cname{
+width: 30%;
+float: left;
+height:200px;
+padding-left: 12%;
+padding-top: 50px;
+<!--background: yellow;-->
+}
+.date{
+width: 30%;
+float:right;
+padding-top: 50px;
+
+<!--background: cyan;-->
+}
+.content{
+padding-top: 150px;
+}
+select{
+padding-right: 40px;
+padding-left: 40px;
+padding-top: 15px;
+padding-bottom: 15px;
+border-radius: 5px;
+}
+</style>
+<div class="cname">
+
+
+<!--<input type="text" name="cust_name" placeholder="Enter Customer Name" required autofocus>-->
+
+
+<form action="./order_buff" method="post">
+     {% csrf_token %}
+  <label style="font-size:25px">Name : {{supp_name}}</label>
+</div>
+<input type="text" hidden name="supp_name" value="{{supp_name}}">
+<div class="date">
+        <label style="font-size:25px">Date : {{date}}</label><br><br>
+        <label style="font-size:25px">Order number: {{order}}</label>
+
+</div>
+<center>
+
+
+<div class="content">
+
+    <table>
+        <tr>
+            <td>Product name</td>
+<!--            <td>Product Size</td>-->
+<!--            <td>Product Unit</td>-->
+            <td>Product Quantity</td>
+            <td>Product Rate</td>
+            <td>Total</td>
+        </tr>
+        {% for c in order_buff_list %}
+        <tr>
+            <td>{{c.prod_name}}</td>
+<!--            <td>{{c.prod_size}}</td>-->
+<!--            <td>{{c.prod_unit}}</td>-->
+            <td>{{c.prod_quant}}</td>
+            <td>{{c.prod_rate}}</td>
+            <td>{{c.total}}</td>
+        </tr>
+        {% endfor %}
+
+
+
+    </table><br><br><br>
+    </form><br><br><br></center>
+    <style>
+
+        .table4{
+        width:55%;
+        }
+        .table4 td{
+        width:30%;
+        }
+        .table5{
+        padding-left:69%;
+        }
+    </style>
+    <form action="insertOrder" method="post">
+        {% csrf_token %}
+<div class="table5">
+    <table class="table4">
+        <tr>
+            <td>Add discount</td>
+            <td><input type="text" name="disc" placeholder="Enter Discount" required style="width:90%" autofocus></td>
+        </tr>
+        <tr>
+            <td>Taxes</td>
+            <td><input type="text" name="tax" placeholder="Enter Tax" required style="width:90%"></td>
+        </tr>
+        <tr>
+            <td>Delivery Charge</td>
+            <td><input type="text" name="delivery" placeholder="Enter Delivery Charge" required style="width:90%"></td>
+        </tr>
+
+
+    </table><br></div>
+<center>
+
+
+        <button type="submit">Save</button>
+    </form><br><br>
+    <form action="cancel" method="post">
+        {% csrf_token %}
+        <button type="submit">Cancel</button>
+    </form><br>
+
+
+    </center>
+</div>
+{% endblock content %}

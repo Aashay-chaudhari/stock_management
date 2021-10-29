@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center><h1 style="font-size:25px">Customers</center>
+<center><br><br>
+        {{ text }}<br><br>
+<table>
+        <tr>
+            <td></td>
+            <td>Customer name</td>
+            <td></td>
+        </tr>
+
+        {% for cust in cust_list %}
+
+
+        <tr>
+            <td><form action="edit_customer/{{cust.id}}" method="post">
+                {% csrf_token %}<button>Edit Button</button></form></td>
+            <td>  <a href="customer/{{cust.cust_name}}">{{cust.cust_name}}</a></td>
+            <td><form action="deletecust/{{cust.cust_name}}" method="post">
+                {% csrf_token %}<button>Delete Customer</button></td>
+        </form>
+        </tr>
+
+        {% endfor %}
+
+    </table><br><br>
+<form action="cancel" method="post">
+        {% csrf_token %}
+            <button type="submit">Done</button>
+    </form><br></center><br><br>
+{% endblock content %}

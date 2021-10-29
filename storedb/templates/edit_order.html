@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management</title>
+
+</head>
+<style>
+    html{
+    background: #D3D3D3	;
+    font-family: Verdana, sans-serif;
+    }
+    .hood{
+    color: black;
+    background: #ededed;
+    border-radius: 30px;
+    }
+
+    table, th, td {
+      table-layout: fixed;
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 70%;
+      text-align: center;
+      padding: 10px;
+    }
+    button {
+      background-color:black;
+      border: medium;
+      border-color: black;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 16px;
+
+    }
+    button:hover{
+      background-color: grey;
+
+}
+    .logo{
+    float:left;
+    padding-left:35%;
+    }
+    .store{
+    float:left;
+    }
+    .heading{
+    height:75px;
+    padding-top:20px;
+    }
+    .tab24{
+    padding-left:50px;
+    }
+</style>
+
+    <div class="store">
+    <center><h1 style="font-size: 50px">Store Management System</center>
+
+<div class="hood"><br><b>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+  padding: 10px;
+}
+input{
+
+padding-top: 2%;
+padding-left: 2%;
+padding-right: 1%;
+padding-bottom: 2%;
+
+border-radius: 5px;
+
+}
+.cname > input{
+font-size: 20px;
+padding:50px;
+border-radius: 5px;
+}
+.date > input{
+font-size: 20px;
+padding:25px;
+border-radius: 5px;
+}
+
+.cname{
+width: 30%;
+float: left;
+height:200px;
+padding-left: 12%;
+padding-top: 50px;
+<!--background: yellow;-->
+}
+.date{
+width: 30%;
+float:right;
+padding-top: 50px;
+
+<!--background: cyan;-->
+}
+.content{
+padding-top: 250px;
+
+}
+select{
+padding-right: 40px;
+padding-left: 40px;
+padding-top: 15px;
+padding-bottom: 15px;
+border-radius: 5px;
+}
+::placeholder {
+  color: black;
+  font-size: 20px;
+}
+</style>
+<div class="cname">
+
+<label style="font-size:25px">Supplier Name:&nbsp;{{order_supp_name}} </label>
+
+</div>
+<div class="date">
+    <label style="font-size:25px">Date: {{order_date}}</label><br><br>
+    <label style="font-size:25px">Order Number: {{order_no}}</label><br><br>
+
+
+</div>
+<center>
+
+
+<div class="content">
+
+    <table>
+        <tr>
+            <td>Product name</td>
+<!--            <td>Product Size</td>-->
+<!--            <td>Product Unit</td>-->
+            <td>Product Quantity</td>
+            <td>Product Rate</td>
+            <td>Sub total</td>
+        </tr>
+
+        {% for i in order %}
+         <form action="{{i.id}}/update_order" method="post">
+             {% csrf_token %}
+        <tr>
+            <input type="text" name="customer_name" hidden value="{{order_cust_name}}">
+            <input type="datetime-local" name="date" hidden value="{{order_date}}">
+            <td><input type="text" name="prod_name" hidden value="{{i.prod_name}}">{{i.prod_name}}</td>
+<!--            <td><input type="text" name="size" hidden value="{{i.prod_size}}">{{i.prod_size}}</td>-->
+<!--            <td><input type="text" name="unit" hidden value="{{i.prod_unit}}">{{i.prod_unit}}</td>-->
+            <td><input type="text" name="quant" placeholder="{{i.prod_quant}}" value="{{i.prod_quant}}" autofocus style="width:90%"></td>
+            <td><input type="text" name="rate" placeholder="{{i.prod_rate}}" value="{{i.prod_rate}}" style="width:90%"></td>
+            <td><input type="text" name="total" placeholder="{{i.total}}" value="{{i.total}}" style="width:90%"></td>
+            <td> <button type="submit">Update</button></td>
+        </tr>
+         </form>
+        {% endfor %}
+
+    </table><br>
+    <style>
+
+        .table4{
+        width:55%;
+        }
+        .table4 td{
+        width:30%;
+        }
+        .table5{
+        padding-left:45%;
+        }
+    </style>
+<div class="table5">
+
+
+    <table class="table4">
+        <tr>
+                <form action="{{order_no}}/update_order_disc" method="post">
+    {% csrf_token %}
+            <td>Discount</td>
+            <td><input type="text" name="discount" placeholder="{{discount}}" value="{{discount}}" style="width:90%"></td>
+        </tr>
+        <tr>
+            <td>Taxes</td>
+            <td><input type="text" name="taxes" placeholder="{{tax}}" value="{{tax}}" style="width:90%"></td>
+        </tr>
+        <tr>
+            <td>Delivery Charge</td>
+            <td><input type="text" name="delivery" placeholder="{{delivery}}" value="{{delivery}}" style="width:90%"></td>
+
+        </tr>
+
+    </table><br></div>
+    </center>
+    <span style="padding-left:77%;">
+    <button type="submit">Update</button>
+    </form>
+
+
+    <center>
+    <br><br><br>
+    <label style="font-size:30px">Total Bill: {{ total }}</label><br><br><br><br>
+     <form action="./save_order " method="post">
+    {% csrf_token %}
+    <button type="submit">Done</button>
+
+    </form><br><br><br><br><br>
+</div>
+
+
+</center>
+
+</div>
+<body>
+
+</body>
+</html>

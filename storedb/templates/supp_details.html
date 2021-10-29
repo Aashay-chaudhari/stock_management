@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+   <h1><u>Supplier name</u>:  {{supp_name}}</h1><br>
+<table>
+        <tr>
+            <td>Product Name</td>
+            <td>Order Number</td>
+            <td>Bill</td>
+        </tr>
+
+        {% for order in order_list %}
+
+
+        <tr>
+            <td>{{order.prod_name}}</td>
+            <td><a href="order/{{order.order_no}}">{{order.order_no}}</a>
+            </td>
+            <td>{{order.total}}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table><br><br>
+
+    <form action="supplier_list" method="post">
+        {% csrf_token %}
+        <button type="submit">Back to Supplier List</button>
+
+
+    </form><br><br>
+</center>
+{% endblock content %}
