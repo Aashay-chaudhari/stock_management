@@ -1,4 +1,4 @@
-# Stock Management
+# Stock Management ( Project at master branch of this repo )
 
 A stock management application i created for KrushiArk Naturals and was later sold as an independent stock management software. It is a web application based on django framework in python. The features of this project are listed below :
 1) Provides an admin user interface to execute all CRUD operations on all models registered on admin site. Every operation done by Admin is also tracked.
