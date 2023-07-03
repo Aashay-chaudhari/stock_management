@@ -33,7 +33,7 @@ A stock management application I created for KrushiArk Naturals was later sold a
 
  Website look: 
  
-![home (1)](https://github.com/Aashay-chaudhari/stock_management/assets/93089131/bb66432f-6f00-476f-9451-a2b7966a4be7)
+![home](https://github.com/Aashay-chaudhari/stock_management/assets/93089131/fcc12fff-e346-471d-8b82-f38e56ef9b16)
 
 ![addProduct](https://github.com/Aashay-chaudhari/stock_management/assets/93089131/8add0d27-f1e8-4f52-ab32-9aff59422e86)
   
